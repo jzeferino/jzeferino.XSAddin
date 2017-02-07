@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="..\..\packages\MonoDevelop.Addins.0.3.9\build\net40\MonoDevelop.Addins.props" Condition="Exists('..\..\packages\MonoDevelop.Addins.0.3.9\build\net40\MonoDevelop.Addins.props')" />
+  <Import Project="..\packages\MonoDevelop.Addins.0.3.9\build\net40\MonoDevelop.Addins.props" Condition="Exists('..\packages\MonoDevelop.Addins.0.3.9\build\net40\MonoDevelop.Addins.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{244322D1-C06E-43E3-8B9D-942ADDFCB1E8}</ProjectGuid>
+    <ProjectTypeGuids>{86F6BF2A-E449-4B3E-813B-9ACC37E5545F};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
+    <OutputType>Library</OutputType>
+    <RootNamespace>jzeferino.XSAddin</RootNamespace>
+    <AssemblyName>jzeferino.XSAddin</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug</OutputPath>
+    <DefineConstants>DEBUG;</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release</OutputPath>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Properties\AddinInfo.cs" />
+    <Compile Include="gtk-gui\generated.cs" />
+    <Compile Include="Wizard\GtkSolutionTemplateWizardWidget.cs" />
+    <Compile Include="Wizard\ISolutionTemplateWizardView.cs" />
+    <Compile Include="Wizard\SolutionTemplateWizard.cs" />
+    <Compile Include="Wizard\SolutionTemplateWizardPage.cs" />
+    <Compile Include="gtk-gui\jzeferino.XSAddin.Wizard.GtkSolutionTemplateWizardWidget.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Properties\Manifest.addin.xml" />
+    <EmbeddedResource Include="gtk-gui\gui.stetic">
+      <LogicalName>gui.stetic</LogicalName>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resources\icon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <AddinFile Include="Templates\Project\Native\NativeSolution.xpt.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </AddinFile>
+    <AddinFile Include="Templates\Project\Common\packages.config">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </AddinFile>
+    <AddinFile Include="Templates\File\ViewModelFile.xft.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </AddinFile>
+    <AddinFile Include="Templates\File\ViewModel\ViewModel.cs" />
+    <AddinFile Include="Templates\Project\Common\AssemblyInfo.cs" />
+    <AddinFile Include="Templates\Project\Common\Android\AndroidManifest.xml" />
+    <AddinFile Include="Templates\Project\Common\Android\icon.png" />
+    <AddinFile Include="Templates\Project\Common\Android\Main.axml" />
+    <AddinFile Include="Templates\Project\Common\Android\MainActivity.cs" />
+    <AddinFile Include="Templates\Project\Common\Android\Resource.cs" />
+    <AddinFile Include="Templates\Project\Common\Android\strings.xml" />
+    <AddinFile Include="Templates\Project\Common\Android\empty.xml" />
+    <AddinFile Include="Templates\Project\Common\iOS\AppDelegate.cs" />
+    <AddinFile Include="Templates\Project\Common\iOS\Entitlements.plist.xml" />
+    <AddinFile Include="Templates\Project\Common\iOS\Main.cs" />
+    <AddinFile Include="Templates\Project\Common\iOS\Info.plist.xml" />
+    <AddinFile Include="Templates\Project\Common\iOS\Main.storyboard" />
+    <AddinFile Include="Templates\Project\Common\iOS\ViewController.cs" />
+    <AddinFile Include="Templates\Project\Common\iOS\ViewController.designer.cs" />
+    <AddinFile Include="Templates\Project\Common\iOS\AppIcons.json" />
+    <AddinFile Include="Templates\Project\Common\iOS\Empty.json" />
+    <AddinFile Include="Templates\Project\Cake\build.cake" />
+    <AddinFile Include="Templates\Project\Cake\build.ps1" />
+    <AddinFile Include="Templates\Project\Cake\build.sh" />
+    <AddinFile Include="Templates\Project\Common\.gitignore" />
+    <AddinFile Include="Templates\Project\Common\README.md" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Templates\Project\Common\" />
+    <Folder Include="Templates\File\" />
+    <Folder Include="Templates\Project\Native\" />
+    <Folder Include="Templates\File\ViewModel\" />
+    <Folder Include="Templates\Project\Common\Android\" />
+    <Folder Include="Templates\Project\Common\iOS\" />
+    <Folder Include="Templates\Project\Cake\" />
+    <Folder Include="Wizard\" />
+    <Folder Include="Resources\" />
+  </ItemGroup>
+  <ItemGroup>
+    <AddinReference Include="MonoDevelop.DesignerSupport" />
+    <AddinReference Include="MonoDevelop.GtkCore" />
+  </ItemGroup>
+  <ItemGroup>
+    <Reference Include="gtk-sharp, Version=2.12.0.0, Culture=neutral, PublicKeyToken=35e10195dab3c99f" />
+    <Reference Include="gdk-sharp, Version=2.12.0.0, Culture=neutral, PublicKeyToken=35e10195dab3c99f" />
+    <Reference Include="Mono.Posix" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="packages.config" />
+  </ItemGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <Import Project="..\packages\MonoDevelop.Addins.0.3.9\build\net40\MonoDevelop.Addins.targets" Condition="Exists('..\packages\MonoDevelop.Addins.0.3.9\build\net40\MonoDevelop.Addins.targets')" />
+  <Import Project="..\..\packages\MonoDevelop.Addins.0.3.9\build\net40\MonoDevelop.Addins.targets" Condition="Exists('..\..\packages\MonoDevelop.Addins.0.3.9\build\net40\MonoDevelop.Addins.targets')" />
+</Project>

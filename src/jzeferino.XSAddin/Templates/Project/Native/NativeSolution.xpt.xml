@@ -1,0 +1,170 @@
+﻿<?xml version="1.0"?>
+<Template originator="jzeferino">
+	<TemplateConfiguration>
+		<_Name>Cross Platform solution template</_Name>
+		<Category>jzeferino/crossplatform/solution</Category>
+		<LanguageName>C#</LanguageName>
+		<Icon>jzeferino-icon</Icon>
+		<Image id="jzeferino-logo" />
+		<_Description>Creates a new Cross Platform solution that allows you to select the application name, the application identifier, .gitignore, readme and cake.
+
+It already creates some PCL projects to allow the shared code to be separated in different layers using MVVM pattern.</_Description>
+		<Wizard>solution.wizard</Wizard>
+		<!--Tells the wizard  what are the supported parameters-->
+		<SupportedParameters>
+		</SupportedParameters>
+		<!--Tells the wizard the default values of parameters-->
+		<DefaultParameters>
+		</DefaultParameters>
+	</TemplateConfiguration>
+	<Actions>
+	</Actions>
+	<Combine name="${ProjectName}" directory=".">
+		<Options>
+			<StartupProject>${ProjectName}.Droid</StartupProject>
+		</Options>
+		<!--Shared Code-->
+		<!--ViewModel-->
+		<Project name="${ProjectName}.ViewModel" directory="./src/shared/${ProjectName}.ViewModel" type="C#PortableLibrary">
+			<Options Target="Library" TargetFrameworkVersion=".NETPortable,Version=v4.5,Profile=Profile111" />
+			<References>
+				<Reference type="Package" refto="System" />
+			</References>
+			<Files>
+				<File name="packages.config" DefaultName="packages.config" src="../Common/packages.config" />
+				<File name="Properties/AssemblyInfo.cs" DefaultName="AssemblyInfo.cs" src="../Common/AssemblyInfo.cs" />
+				<!--Using this project to add some general files-->
+				<File name="./../../../.gitignore" src="./../Common/.gitignore" if="HasGitIgnore" />
+				<File name="./../../../build.cake" src="./../Cake/build.cake" if="HasCake" />
+				<File name="./../../../build.ps1" src="./../Cake/build.ps1" if="HasCake" />
+				<File name="./../../../build.sh" src="./../Cake/build.sh" if="HasCake" />
+				<File name="./../../../README.md" src="./../Common/README.md" if="HasReadme" />
+			</Files>
+			<Packages>
+			</Packages>
+		</Project>
+		<!--Service-->
+		<Project name="${ProjectName}.Service" directory="./src/shared/${ProjectName}.Service" type="C#PortableLibrary">
+			<Options Target="Library" TargetFrameworkVersion=".NETPortable,Version=v4.5,Profile=Profile111" />
+			<References>
+				<Reference type="Package" refto="System" />
+			</References>
+			<Packages>
+				<Package ID="Newtonsoft.Json" version="9.0.1" />
+			</Packages>
+			<Files>
+				<File name="Properties/AssemblyInfo.cs" DefaultName="AssemblyInfo.cs" src="../Common/AssemblyInfo.cs" />
+			</Files>
+			<Packages>
+			</Packages>
+		</Project>
+		<!--Controller-->
+		<Project name="${ProjectName}.Controller" directory="./src/shared/${ProjectName}.Controller" type="C#PortableLibrary">
+			<Options Target="Library" TargetFrameworkVersion=".NETPortable,Version=v4.5,Profile=Profile111" />
+			<References>
+				<Reference type="Package" refto="System" />
+			</References>
+			<Files>
+				<File name="packages.config" DefaultName="packages.config" src="../Common/packages.config" />
+				<File name="Properties/AssemblyInfo.cs" DefaultName="AssemblyInfo.cs" src="../Common/AssemblyInfo.cs" />
+			</Files>
+			<Packages>
+			</Packages>
+		</Project>
+		<!--Localisation-->
+		<Project name="${ProjectName}.Localisation" directory="./src/shared/${ProjectName}.Localisation" type="C#PortableLibrary">
+			<Options Target="Library" TargetFrameworkVersion=".NETPortable,Version=v4.5,Profile=Profile111" />
+			<References>
+				<Reference type="Package" refto="System" />
+			</References>
+			<Files>
+				<File name="packages.config" DefaultName="packages.config" src="../Common/packages.config" />
+				<File name="Properties/AssemblyInfo.cs" DefaultName="AssemblyInfo.cs" src="../Common/AssemblyInfo.cs" />
+			</Files>
+			<Packages>
+			</Packages>
+		</Project>
+		<!--Unit Test-->
+		<Project name="${ProjectName}.Tests" directory="./src/test/${ProjectName}.Tests" type="C#PortableLibrary" if="HasUnitTestsProject">
+			<Options Target="Library" TargetFrameworkVersion=".NETPortable,Version=v4.5,Profile=Profile111" />
+			<References>
+				<Reference type="Package" refto="System" />
+			</References>
+			<Packages>
+				<Package Id="xunit" Version="2.1.0" />
+			</Packages>
+			<Files>
+				<File name="Properties/AssemblyInfo.cs" DefaultName="AssemblyInfo.cs" src="../Common/AssemblyInfo.cs" />
+			</Files>
+			<Packages>
+			</Packages>
+		</Project>
+		<!--Android-->
+		<Project name="${ProjectName}.Droid" directory="./src/android/${ProjectName}.Droid" type="MonoDroid" if="HasAndroidProject">
+			<Options AndroidApplication="true" AndroidManifest="Properties/AndroidManifest.xml" AndroidResgenFile="Resources/Resource.designer.cs" AndroidResgenClass="Resource" AndroidUseLatestPlatformSdk="True" JavaMaximumHeapSize="1G" />
+			<References>
+				<Reference type="Package" refto="System" />
+				<Reference type="Package" refto="System.Core" />
+				<Reference type="Package" refto="System.Xml" />
+				<Reference type="Package" refto="Mono.Android" />
+				<Reference type="Project" refto="${ProjectName}.ViewModel" />
+			</References>
+			<Files>
+				<File name="MainActivity.cs" src="../Common/Android/MainActivity.cs" />
+				<Directory name="Resources">
+					<File name="Resource.designer.cs" src="../Common/Android/Resource.cs" />
+					<Directory name="layout">
+						<File name="Main.axml" src="../Common/Android/Main.axml" />
+					</Directory>
+					<Directory name="values">
+						<File name="strings.xml" src="../Common/Android/strings.xml" />
+						<File name="colors.xml" src="../Common/Android/empty.xml" />
+						<File name="dimen.xml" src="../Common/Android/empty.xml" />
+						<File name="arrays.xml" src="../Common/Android/empty.xml" />
+						<File name="styles.xml" src="../Common/Android/empty.xml" />
+					</Directory>
+					<Directory name="mipmap-hdpi" />
+					<Directory name="mipmap-mdpi" />
+					<Directory name="mipmap-xhdpi" />
+					<Directory name="mipmap-xxhdpi">
+						<RawFile name="icon.png" src="../Common/Android/icon.png" />
+					</Directory>
+					<Directory name="mipmap-xxxhdpi" />
+					<Directory name="drawable" />
+				</Directory>
+				<Directory name="Properties">
+					<File name="AssemblyInfo.cs" src="../Common/AssemblyInfo.cs" />
+					<File name="AndroidManifest.xml" src="../Common/Android/AndroidManifest.xml" />
+				</Directory>
+				<Directory name="Assets" />
+			</Files>
+		</Project>
+		<!--iOS-->
+		<Project name="${ProjectName}.iOS" directory="./src/ios/${ProjectName}.iOS" type="XamarinIOS" if="HasiOSProject">
+			<References>
+				<Reference type="Package" refto="System" />
+				<Reference type="Package" refto="System.Xml" />
+				<Reference type="Package" refto="System.Core" />
+				<Reference type="Package" refto="Xamarin.iOS" />
+				<Reference type="Project" refto="${ProjectName}.ViewModel" />
+			</References>
+			<Files>
+				<Directory name="Assets.xcassets">
+					<Directory name="AppIcon.appiconset">
+						<RawFile name="Contents.json" SuppressAutoOpen="False" BuildAction="ImageAsset" src="../Common/iOS/AppIcons.json" />
+					</Directory>
+					<RawFile name="Contents.json" SuppressAutoOpen="False" BuildAction="ImageAsset" src="../Common/iOS/Empty.json" />
+				</Directory>
+				<FileTemplateReference TemplateID="LaunchScreen" name="LaunchScreen.storyboard" />
+				<Directory name="Resources" />
+				<File name="Info.plist" AddStandardHeader="False" src="../Common/iOS/Info.plist.xml" />
+				<File name="Entitlements.plist" AddStandardHeader="False" src="../Common/iOS/Entitlements.plist.xml" />
+				<File name="Main.cs" AddStandardHeader="True" src="../Common/iOS/Main.cs" />
+				<File name="AppDelegate.cs" AddStandardHeader="True" src="../Common/iOS/AppDelegate.cs" />
+				<File name="Main.storyboard" src="../Common/iOS/Main.storyboard" />
+				<File name="ViewController.cs" AddStandardHeader="True" src="../Common/iOS/ViewController.cs" />
+				<File name="ViewController.designer.cs" AddStandardHeader="False" DependsOn="ViewController.cs" src="../Common/iOS/ViewController.designer.cs" />
+			</Files>
+		</Project>
+	</Combine>
+</Template>

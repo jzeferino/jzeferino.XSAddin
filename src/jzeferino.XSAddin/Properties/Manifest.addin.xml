@@ -1,0 +1,34 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<ExtensionModel>
+	<!--    Create stock icon -->
+	<Extension path="/MonoDevelop/Core/StockIcons">
+		<StockIcon stockid="jzeferino-icon" resource="jzeferino.XSAddin.Resources.icon.png" />
+	</Extension>
+	<!--    Create template image -->
+	<Extension path="/MonoDevelop/Ide/TemplateImages">
+		<Image id="jzeferino-logo" resource="jzeferino.XSAddin.Resources.icon.png" />
+	</Extension>
+	<!--    Add jzeferino has projectTemplateCategory -->
+	<Extension path="/MonoDevelop/Ide/ProjectTemplateCategories">
+		<Category id="jzeferino" name="jzeferino" icon="jzeferino-icon" />
+	</Extension>
+	<!--    Add crossplatform has jzeferino sub-category -->
+	<Extension path="/MonoDevelop/Ide/ProjectTemplateCategories/jzeferino">
+		<Category id="crossplatform" name="Cross Platform">
+			<!--    Add solution has crossplatform sub-category -->
+			<Category id="solution" name="Solution" />
+		</Category>
+	</Extension>
+	<!--    Project Template extension -->
+	<Extension path="/MonoDevelop/Ide/ProjectTemplates">
+		<ProjectTemplate id="solution.native" file="Templates/Project/Native/NativeSolution.xpt.xml" />
+	</Extension>
+	<!--    File template extension -->
+	<Extension path="/MonoDevelop/Ide/FileTemplates">
+		<FileTemplate id="filetemplate.viewmodel" file="Templates/File/ViewModelFile.xft.xml" />
+	</Extension>
+	<!--    Custom wizard extension -->
+	<Extension path="/MonoDevelop/Ide/ProjectTemplateWizards">
+		<Class id="solution.wizard" class="jzeferino.XSAddin.Wizard.SolutionTemplateWizard" />
+	</Extension>
+</ExtensionModel>

@@ -1,0 +1,31 @@
+
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2012
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{A6D5C00C-09F6-48DA-8196-1555AAE9355C}"
+	ProjectSection(SolutionItems) = preProject
+		build.cake = build.cake
+		addin-project.xml = addin-project.xml
+		README.md = README.md
+		TODO.md = TODO.md
+		appveyor.yml = appveyor.yml
+	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "jzeferino.XSAddin", "src\jzeferino.XSAddin\jzeferino.XSAddin.csproj", "{244322D1-C06E-43E3-8B9D-942ADDFCB1E8}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{0AF400B6-336A-46B7-A2BC-5BEB4FF4EB39}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{244322D1-C06E-43E3-8B9D-942ADDFCB1E8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{244322D1-C06E-43E3-8B9D-942ADDFCB1E8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{244322D1-C06E-43E3-8B9D-942ADDFCB1E8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{244322D1-C06E-43E3-8B9D-942ADDFCB1E8}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{244322D1-C06E-43E3-8B9D-942ADDFCB1E8} = {0AF400B6-336A-46B7-A2BC-5BEB4FF4EB39}
+	EndGlobalSection
+EndGlobal

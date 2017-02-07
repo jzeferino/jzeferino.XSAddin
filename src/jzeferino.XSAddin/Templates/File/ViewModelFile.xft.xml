@@ -1,0 +1,16 @@
+﻿<?xml version="1.0"?>
+<Template>
+	<TemplateConfiguration>
+		<_Name>ViewModel</_Name>
+		<_Category>jzeferino</_Category>
+		<Icon>jzeferino-icon</Icon>
+		<LanguageName>C#</LanguageName>
+		<_Description>Creates a ViewModel.</_Description>
+		<DefaultFilename>ViewModel</DefaultFilename>
+	</TemplateConfiguration>
+	<Conditions>
+	</Conditions>
+	<TemplateFiles>
+		<File name="${Name}" DefaultExtension=".cs" AddStandardHeader="False" BuildAction="Compile" src="./ViewModel/ViewModel.cs" />
+	</TemplateFiles>
+</Template>
