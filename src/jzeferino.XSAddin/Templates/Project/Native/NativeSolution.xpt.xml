@@ -23,6 +23,19 @@ It already creates some PCL projects to allow the shared code to be separated in
 		<Options>
 			<StartupProject>${ProjectName}.Droid</StartupProject>
 		</Options>
+		<!--Dummy project just to add some files in the solution-->
+		<Project name="DeleteMe" directory="./DeleteMe">
+			<Files>
+				<!--Using this project to add some general files-->
+				<File name="./../.gitignore" src="./../Common/.gitignore" if="HasGitIgnore" />
+				<File name="./../build.cake" src="./../Cake/build.cake" if="HasCake" />
+				<File name="./../build.ps1" src="./../Cake/build.ps1" if="HasCake" />
+				<File name="./../build.sh" src="./../Cake/build.sh" if="HasCake" />
+				<File name="./../README.md" src="./../Common/README.md" if="HasReadme" />
+			</Files>
+			<Packages>
+			</Packages>
+		</Project>
 		<!--Shared Code-->
 		<!--ViewModel-->
 		<Project name="${ProjectName}.ViewModel" directory="./src/shared/${ProjectName}.ViewModel" type="C#PortableLibrary">
@@ -31,17 +44,8 @@ It already creates some PCL projects to allow the shared code to be separated in
 				<Reference type="Package" refto="System" />
 			</References>
 			<Files>
-				<File name="packages.config" DefaultName="packages.config" src="../Common/packages.config" />
 				<File name="Properties/AssemblyInfo.cs" DefaultName="AssemblyInfo.cs" src="../Common/AssemblyInfo.cs" />
-				<!--Using this project to add some general files-->
-				<File name="./../../../.gitignore" src="./../Common/.gitignore" if="HasGitIgnore" />
-				<File name="./../../../build.cake" src="./../Cake/build.cake" if="HasCake" />
-				<File name="./../../../build.ps1" src="./../Cake/build.ps1" if="HasCake" />
-				<File name="./../../../build.sh" src="./../Cake/build.sh" if="HasCake" />
-				<File name="./../../../README.md" src="./../Common/README.md" if="HasReadme" />
 			</Files>
-			<Packages>
-			</Packages>
 		</Project>
 		<!--Service-->
 		<Project name="${ProjectName}.Service" directory="./src/shared/${ProjectName}.Service" type="C#PortableLibrary">
@@ -55,8 +59,6 @@ It already creates some PCL projects to allow the shared code to be separated in
 			<Files>
 				<File name="Properties/AssemblyInfo.cs" DefaultName="AssemblyInfo.cs" src="../Common/AssemblyInfo.cs" />
 			</Files>
-			<Packages>
-			</Packages>
 		</Project>
 		<!--Controller-->
 		<Project name="${ProjectName}.Controller" directory="./src/shared/${ProjectName}.Controller" type="C#PortableLibrary">
@@ -68,8 +70,6 @@ It already creates some PCL projects to allow the shared code to be separated in
 				<File name="packages.config" DefaultName="packages.config" src="../Common/packages.config" />
 				<File name="Properties/AssemblyInfo.cs" DefaultName="AssemblyInfo.cs" src="../Common/AssemblyInfo.cs" />
 			</Files>
-			<Packages>
-			</Packages>
 		</Project>
 		<!--Localisation-->
 		<Project name="${ProjectName}.Localisation" directory="./src/shared/${ProjectName}.Localisation" type="C#PortableLibrary">
@@ -81,8 +81,6 @@ It already creates some PCL projects to allow the shared code to be separated in
 				<File name="packages.config" DefaultName="packages.config" src="../Common/packages.config" />
 				<File name="Properties/AssemblyInfo.cs" DefaultName="AssemblyInfo.cs" src="../Common/AssemblyInfo.cs" />
 			</Files>
-			<Packages>
-			</Packages>
 		</Project>
 		<!--Unit Test-->
 		<Project name="${ProjectName}.Tests" directory="./src/test/${ProjectName}.Tests" type="C#PortableLibrary" if="HasUnitTestsProject">
@@ -96,8 +94,6 @@ It already creates some PCL projects to allow the shared code to be separated in
 			<Files>
 				<File name="Properties/AssemblyInfo.cs" DefaultName="AssemblyInfo.cs" src="../Common/AssemblyInfo.cs" />
 			</Files>
-			<Packages>
-			</Packages>
 		</Project>
 		<!--Android-->
 		<Project name="${ProjectName}.Droid" directory="./src/android/${ProjectName}.Droid" type="MonoDroid" if="HasAndroidProject">
