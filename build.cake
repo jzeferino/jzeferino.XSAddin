@@ -45,7 +45,8 @@ Task("Build")
     .Does(() =>
 	{ 		
 		 DotNetBuild(solutionFile, settings =>
-        	settings.SetConfiguration(configuration)         
+        	settings.SetConfiguration(configuration)   
+			.WithTarget("Build")
             .WithProperty("TreatWarningsAsErrors", "false")
 			.SetVerbosity(Verbosity.Verbose));        
     });
