@@ -22,7 +22,7 @@ Task("Clean-Solution")
 		DotNetBuild(solutionFile, settings => settings
 			.SetConfiguration(configuration)
 			.WithTarget("Clean")
-			.SetVerbosity(Verbosity.Verbose));
+			.SetVerbosity(Verbosity.Quiet));
 	});
 
 Task("Clean-Folders")
@@ -47,7 +47,7 @@ Task("Build")
 		 DotNetBuild(solutionFile, settings =>
         	settings.SetConfiguration(configuration)         
             .WithProperty("TreatWarningsAsErrors", "false")
-			.SetVerbosity(Verbosity.Quiet));        
+			.SetVerbosity(Verbosity.Verbose));        
     });
 
 Task("Pack")
