@@ -24,7 +24,7 @@ It already creates some PCL projects to allow the shared code to be separated in
 			<StartupProject>${ProjectName}.Droid</StartupProject>
 		</Options>
 		<!--Dummy project just to add some files in the solution-->
-		<Project name="DeleteMe" directory="./DeleteMe">
+		<Project name="${CopySolutionLevelItemsProject}" directory="./${CopySolutionLevelItemsProject}">
 			<Files>
 				<!--Using this project to add some general files-->
 				<File name="./../.gitignore" src="./../Common/.gitignore" if="HasGitIgnore" />
@@ -33,12 +33,10 @@ It already creates some PCL projects to allow the shared code to be separated in
 				<File name="./../build.sh" src="./../Cake/build.sh" if="HasCake" />
 				<File name="./../README.md" src="./../Common/README.md" if="HasReadme" />
 			</Files>
-			<Packages>
-			</Packages>
 		</Project>
 		<!--Shared Code-->
 		<!--ViewModel-->
-		<Project name="${ProjectName}.ViewModel" directory="./src/shared/${ProjectName}.ViewModel" type="C#PortableLibrary">
+		<Project name="${ProjectName}.ViewModel" directory="./${Src}/${Shared}/${ProjectName}.ViewModel" type="C#PortableLibrary">
 			<Options Target="Library" TargetFrameworkVersion=".NETPortable,Version=v4.5,Profile=Profile111" />
 			<References>
 				<Reference type="Package" refto="System" />
@@ -48,7 +46,7 @@ It already creates some PCL projects to allow the shared code to be separated in
 			</Files>
 		</Project>
 		<!--Service-->
-		<Project name="${ProjectName}.Service" directory="./src/shared/${ProjectName}.Service" type="C#PortableLibrary">
+		<Project name="${ProjectName}.Service" directory="./${Src}/${Shared}/${ProjectName}.Service" type="C#PortableLibrary">
 			<Options Target="Library" TargetFrameworkVersion=".NETPortable,Version=v4.5,Profile=Profile111" />
 			<References>
 				<Reference type="Package" refto="System" />
@@ -61,7 +59,7 @@ It already creates some PCL projects to allow the shared code to be separated in
 			</Files>
 		</Project>
 		<!--Controller-->
-		<Project name="${ProjectName}.Controller" directory="./src/shared/${ProjectName}.Controller" type="C#PortableLibrary">
+		<Project name="${ProjectName}.Controller" directory="./${Src}/${Shared}/${ProjectName}.Controller" type="C#PortableLibrary">
 			<Options Target="Library" TargetFrameworkVersion=".NETPortable,Version=v4.5,Profile=Profile111" />
 			<References>
 				<Reference type="Package" refto="System" />
@@ -72,7 +70,7 @@ It already creates some PCL projects to allow the shared code to be separated in
 			</Files>
 		</Project>
 		<!--Localisation-->
-		<Project name="${ProjectName}.Localisation" directory="./src/shared/${ProjectName}.Localisation" type="C#PortableLibrary">
+		<Project name="${ProjectName}.Localisation" directory="./${Src}/${Shared}/${ProjectName}.Localisation" type="C#PortableLibrary">
 			<Options Target="Library" TargetFrameworkVersion=".NETPortable,Version=v4.5,Profile=Profile111" />
 			<References>
 				<Reference type="Package" refto="System" />
@@ -83,7 +81,7 @@ It already creates some PCL projects to allow the shared code to be separated in
 			</Files>
 		</Project>
 		<!--Unit Test-->
-		<Project name="${ProjectName}.Tests" directory="./src/test/${ProjectName}.Tests" type="C#PortableLibrary" if="HasUnitTestsProject">
+		<Project name="${ProjectName}.Tests" directory="./${Src}/${Test}/${ProjectName}.Tests" type="C#PortableLibrary" if="HasUnitTestsProject">
 			<Options Target="Library" TargetFrameworkVersion=".NETPortable,Version=v4.5,Profile=Profile111" />
 			<References>
 				<Reference type="Package" refto="System" />
@@ -96,7 +94,7 @@ It already creates some PCL projects to allow the shared code to be separated in
 			</Files>
 		</Project>
 		<!--Android-->
-		<Project name="${ProjectName}.Droid" directory="./src/android/${ProjectName}.Droid" type="MonoDroid" if="HasAndroidProject">
+		<Project name="${ProjectName}.Droid" directory="./${Src}/${Android}/${ProjectName}.Droid" type="MonoDroid" if="HasAndroidProject">
 			<Options AndroidApplication="true" AndroidManifest="Properties/AndroidManifest.xml" AndroidResgenFile="Resources/Resource.designer.cs" AndroidResgenClass="Resource" AndroidUseLatestPlatformSdk="True" JavaMaximumHeapSize="1G" />
 			<References>
 				<Reference type="Package" refto="System" />
@@ -136,7 +134,7 @@ It already creates some PCL projects to allow the shared code to be separated in
 			</Files>
 		</Project>
 		<!--iOS-->
-		<Project name="${ProjectName}.iOS" directory="./src/ios/${ProjectName}.iOS" type="XamarinIOS" if="HasiOSProject">
+		<Project name="${ProjectName}.iOS" directory="./${Src}/${Ios}/${ProjectName}.iOS" type="XamarinIOS" if="HasiOSProject">
 			<References>
 				<Reference type="Package" refto="System" />
 				<Reference type="Package" refto="System.Xml" />

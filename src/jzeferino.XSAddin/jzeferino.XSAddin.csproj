@@ -35,6 +35,7 @@
     <Compile Include="Wizard\SolutionTemplateWizard.cs" />
     <Compile Include="Wizard\SolutionTemplateWizardPage.cs" />
     <Compile Include="gtk-gui\jzeferino.XSAddin.Wizard.GtkSolutionTemplateWizardWidget.cs" />
+    <Compile Include="Extensions.cs" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Properties\Manifest.addin.xml" />
