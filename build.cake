@@ -22,7 +22,7 @@ Task("Clean-Solution")
 		DotNetBuild(solutionFile, settings => settings
 			.SetConfiguration(configuration)
 			.WithTarget("Clean")
-			.SetVerbosity(Verbosity.Minimal));
+			.SetVerbosity(Verbosity.Verbose));
 	});
 
 Task("Clean-Folders")
