@@ -88,6 +88,8 @@ namespace jzeferino.XSAddin.Wizard
 
 		private global::Gtk.CheckButton checkboxCake;
 
+		private global::Gtk.CheckButton checkboxFolderStructure;
+
 		private global::Gtk.HSeparator hseparator16;
 
 		private global::Gtk.VPaned vpaned2;
@@ -476,32 +478,43 @@ namespace jzeferino.XSAddin.Wizard
 			this.hbox8.Add(this.checkboxCake);
 			global::Gtk.Box.BoxChild w39 = ((global::Gtk.Box.BoxChild)(this.hbox8[this.checkboxCake]));
 			w39.Position = 2;
+			// Container child hbox8.Gtk.Box+BoxChild
+			this.checkboxFolderStructure = new global::Gtk.CheckButton();
+			this.checkboxFolderStructure.TooltipMarkup = "Map project folder structure in solution with solution folders.";
+			this.checkboxFolderStructure.CanFocus = true;
+			this.checkboxFolderStructure.Name = "checkboxFolderStructure";
+			this.checkboxFolderStructure.Label = global::Mono.Unix.Catalog.GetString("Map solution folders");
+			this.checkboxFolderStructure.DrawIndicator = true;
+			this.checkboxFolderStructure.UseUnderline = true;
+			this.hbox8.Add(this.checkboxFolderStructure);
+			global::Gtk.Box.BoxChild w40 = ((global::Gtk.Box.BoxChild)(this.hbox8[this.checkboxFolderStructure]));
+			w40.Position = 3;
 			this.vbox20.Add(this.hbox8);
-			global::Gtk.Box.BoxChild w40 = ((global::Gtk.Box.BoxChild)(this.vbox20[this.hbox8]));
-			w40.Position = 0;
-			w40.Expand = false;
-			w40.Fill = false;
+			global::Gtk.Box.BoxChild w41 = ((global::Gtk.Box.BoxChild)(this.vbox20[this.hbox8]));
+			w41.Position = 0;
+			w41.Expand = false;
+			w41.Fill = false;
 			// Container child vbox20.Gtk.Box+BoxChild
 			this.hseparator16 = new global::Gtk.HSeparator();
 			this.hseparator16.Name = "hseparator16";
 			this.vbox20.Add(this.hseparator16);
-			global::Gtk.Box.BoxChild w41 = ((global::Gtk.Box.BoxChild)(this.vbox20[this.hseparator16]));
-			w41.Position = 1;
-			w41.Expand = false;
-			w41.Fill = false;
-			this.vbox19.Add(this.vbox20);
-			global::Gtk.Box.BoxChild w42 = ((global::Gtk.Box.BoxChild)(this.vbox19[this.vbox20]));
-			w42.Position = 2;
+			global::Gtk.Box.BoxChild w42 = ((global::Gtk.Box.BoxChild)(this.vbox20[this.hseparator16]));
+			w42.Position = 1;
 			w42.Expand = false;
 			w42.Fill = false;
+			this.vbox19.Add(this.vbox20);
+			global::Gtk.Box.BoxChild w43 = ((global::Gtk.Box.BoxChild)(this.vbox19[this.vbox20]));
+			w43.Position = 2;
+			w43.Expand = false;
+			w43.Fill = false;
 			// Container child vbox19.Gtk.Box+BoxChild
 			this.vpaned2 = new global::Gtk.VPaned();
 			this.vpaned2.CanFocus = true;
 			this.vpaned2.Name = "vpaned2";
 			this.vpaned2.Position = 10;
 			this.vbox19.Add(this.vpaned2);
-			global::Gtk.Box.BoxChild w43 = ((global::Gtk.Box.BoxChild)(this.vbox19[this.vpaned2]));
-			w43.Position = 3;
+			global::Gtk.Box.BoxChild w44 = ((global::Gtk.Box.BoxChild)(this.vbox19[this.vpaned2]));
+			w44.Position = 3;
 			// Container child vbox19.Gtk.Box+BoxChild
 			this.label14 = new global::Gtk.Label();
 			this.label14.Name = "label14";
@@ -509,10 +522,10 @@ namespace jzeferino.XSAddin.Wizard
 			this.label14.LabelProp = global::Mono.Unix.Catalog.GetString("jzeferino");
 			this.label14.Justify = ((global::Gtk.Justification)(3));
 			this.vbox19.Add(this.label14);
-			global::Gtk.Box.BoxChild w44 = ((global::Gtk.Box.BoxChild)(this.vbox19[this.label14]));
-			w44.Position = 4;
-			w44.Expand = false;
-			w44.Fill = false;
+			global::Gtk.Box.BoxChild w45 = ((global::Gtk.Box.BoxChild)(this.vbox19[this.label14]));
+			w45.Position = 4;
+			w45.Expand = false;
+			w45.Fill = false;
 			this.Add(this.vbox19);
 			if ((this.Child != null))
 			{

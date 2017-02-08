@@ -51,9 +51,6 @@ It already creates some PCL projects to allow the shared code to be separated in
 			<References>
 				<Reference type="Package" refto="System" />
 			</References>
-			<Packages>
-				<Package ID="Newtonsoft.Json" version="9.0.1" />
-			</Packages>
 			<Files>
 				<File name="Properties/AssemblyInfo.cs" DefaultName="AssemblyInfo.cs" src="../Common/AssemblyInfo.cs" />
 			</Files>
@@ -81,14 +78,11 @@ It already creates some PCL projects to allow the shared code to be separated in
 			</Files>
 		</Project>
 		<!--Unit Test-->
-		<Project name="${ProjectName}.Tests" directory="./${Src}/${Test}/${ProjectName}.Tests" type="C#PortableLibrary" if="HasUnitTestsProject">
+		<Project name="${ProjectName}.Tests" directory="./${Src}/${Tests}/${ProjectName}.Tests" type="C#PortableLibrary" if="HasUnitTestsProject">
 			<Options Target="Library" TargetFrameworkVersion=".NETPortable,Version=v4.5,Profile=Profile111" />
 			<References>
 				<Reference type="Package" refto="System" />
 			</References>
-			<Packages>
-				<Package Id="xunit" Version="2.1.0" />
-			</Packages>
 			<Files>
 				<File name="Properties/AssemblyInfo.cs" DefaultName="AssemblyInfo.cs" src="../Common/AssemblyInfo.cs" />
 			</Files>

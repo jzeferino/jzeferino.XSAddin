@@ -20,7 +20,7 @@ namespace jzeferino.XSAddin.Wizard
         private const string Android = "android";
         private const string Ios = "ios";
         private const string Shared = "shared";
-        private const string Test = "test";
+        private const string Tests = "tests";
         private const string CopySolutionLevelItemsProject = "CopySolutionLevelItemsProject";
 
         public override string Id => "solution.wizard";
@@ -37,7 +37,7 @@ namespace jzeferino.XSAddin.Wizard
             Parameters[Android] = Android;
             Parameters[Ios] = Ios;
             Parameters[Shared] = Shared;
-            Parameters[Test] = Test;
+            Parameters[Tests] = Tests;
             Parameters[CopySolutionLevelItemsProject] = CopySolutionLevelItemsProject;
         }
 
@@ -54,7 +54,7 @@ namespace jzeferino.XSAddin.Wizard
 
             await RemoveCopySolutionLevelItemsDummyProject(solution);
             RemoveDefaultGeneratedProject(solution, projectName);
-            CreateAndArrangeSolutinFolders(solution);
+            await CreateAndArrangeSolutinFolders(solution);
         }
 
         private async Task RemoveCopySolutionLevelItemsDummyProject(Solution solution)
@@ -65,26 +65,49 @@ namespace jzeferino.XSAddin.Wizard
                 solution.RootFolder.Items.Remove(copySolutionLevelItemsProject);
                 await solution.SaveSolutionAsync();
 
-                // Delete localy
                 Directory.Delete(copySolutionLevelItemsProject.BaseDirectory, true);
             }
         }
 
         private void RemoveDefaultGeneratedProject(Solution solution, string projectName)
         {
-            if (!string.IsNullOrEmpty(projectName))
+            var path = Path.Combine(solution.BaseDirectory, projectName);
+            if (Directory.Exists(path))
             {
-                var path = Path.Combine(solution.BaseDirectory, projectName);
-                if (Directory.Exists(path))
-                {
-                    Directory.Delete(Path.Combine(solution.BaseDirectory, projectName), true);
-                }
+                Directory.Delete(Path.Combine(solution.BaseDirectory, projectName), true);
             }
         }
 
-        private void CreateAndArrangeSolutinFolders(Solution solution)
+        private async Task CreateAndArrangeSolutinFolders(Solution solution)
         {
+            if (string.IsNullOrEmpty(Parameters[SolutionTemplateWizardPage.HasFolderStructureParameter]))
+            {
+                return;
+            }
 
+            var srcFolder = new SolutionFolder();
+            srcFolder.Name = Src;
+            solution.RootFolder.Items.Add(srcFolder);
+
+            AddInsideSrcSolutionFolder(solution, Shared, srcFolder);
+            AddInsideSrcSolutionFolder(solution, Android, srcFolder);
+            AddInsideSrcSolutionFolder(solution, Ios, srcFolder);
+            AddInsideSrcSolutionFolder(solution, Tests, srcFolder);
+
+            await solution.SaveSolutionAsync();
+        }
+
+        private void AddInsideSrcSolutionFolder(Solution solution, string partialPath, SolutionFolder outterSolutionFolder = null)
+        {
+            var projects = solution.Items.Where(p => p.BaseDirectory.ToString().Contains(partialPath));
+            if (!projects.IsNullOrEmpty())
+            {
+                var solutionFolder = new SolutionFolder();
+                solutionFolder.Name = partialPath;
+                solutionFolder.Items.AddRange(projects);
+
+                (outterSolutionFolder ?? solution.RootFolder).Items.Add(solutionFolder);
+            }
         }
     }
 }

@@ -16,15 +16,16 @@ namespace jzeferino.XSAddin.Wizard
         }
 
         // Parameter constants.
-        private const string HasSharedCodeParameter = "HasSharedCode";
-        private const string HasReadmeParameter = "HasReadme";
-        private const string HasGitignoreParameter = "HasGitignore";
-        private const string HasCakeParameter = "HasCake";
-        private const string HasAndroidProjectParameter = "HasAndroidProject";
-        private const string HasiOSProjectParameter = "HasiOSProject";
-        private const string HasUnitTestsProjectParameter = "HasUnitTestsProject";
-        private const string ApplicationIdentifierParameter = "ApplicationIdentifier";
-        private const string ApplicationNameParameter = "ApplicationName";
+        public const string HasSharedCodeParameter = "HasSharedCode";
+        public const string HasReadmeParameter = "HasReadme";
+        public const string HasGitignoreParameter = "HasGitignore";
+        public const string HasCakeParameter = "HasCake";
+        public const string HasAndroidProjectParameter = "HasAndroidProject";
+        public const string HasiOSProjectParameter = "HasiOSProject";
+        public const string HasUnitTestsProjectParameter = "HasUnitTestsProject";
+        public const string HasFolderStructureParameter = "HasFolderStructure";
+        public const string ApplicationIdentifierParameter = "ApplicationIdentifier";
+        public const string ApplicationNameParameter = "ApplicationName";
 
         // Backing fields.
         private bool _hasReadme;
@@ -34,6 +35,7 @@ namespace jzeferino.XSAddin.Wizard
         private bool _hasAndroidProject;
         private bool _hasiOSProject;
         private bool _hasUnitTestsProject;
+        private bool _hasFolderStructureParameter;
         private string _applicationIdentifier;
         private string _applicationName;
 
@@ -79,6 +81,12 @@ namespace jzeferino.XSAddin.Wizard
         {
             get { return _hasUnitTestsProject; }
             set { _wizard.Parameters[HasUnitTestsProjectParameter] = (_hasUnitTestsProject = value).ToString(); }
+        }
+
+        public bool FolderStructure
+        {
+            get { return _hasFolderStructureParameter; }
+            set { _wizard.Parameters[HasFolderStructureParameter] = (_hasFolderStructureParameter = value).ToString(); }
         }
 
         public string ApplicationIdentifier

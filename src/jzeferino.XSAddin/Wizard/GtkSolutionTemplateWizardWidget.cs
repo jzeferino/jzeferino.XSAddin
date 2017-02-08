@@ -30,6 +30,7 @@ namespace jzeferino.XSAddin.Wizard
             checkboxAndroidProject.Toggled += AndroidProjectCheckChanged;
             checkboxiOSProject.Toggled += iOSProjectCheckChanged;
             checkboxUnitTestsProject.Toggled += UnitTestsProjectChanged;
+            checkboxFolderStructure.Toggled += FolderStructureChanged;
             entryApplicationIdentifier.Changed += EntryApplicationIdentifierChanged;
             entryApplicationName.Changed += EntryApplicationNameChanged;
         }
@@ -41,6 +42,7 @@ namespace jzeferino.XSAddin.Wizard
         private void AndroidProjectCheckChanged(object sender, EventArgs e) => WizardPage.HasAndroidProject = checkboxAndroidProject.Active;
         private void iOSProjectCheckChanged(object sender, EventArgs e) => WizardPage.HasiOSProject = checkboxiOSProject.Active;
         private void UnitTestsProjectChanged(object sender, EventArgs e) => WizardPage.HasUnitTestsProject = checkboxUnitTestsProject.Active;
+        private void FolderStructureChanged(object sender, EventArgs e) => WizardPage.FolderStructure = checkboxFolderStructure.Active;
         private void EntryApplicationIdentifierChanged(object sender, EventArgs e) => WizardPage.ApplicationIdentifier = entryApplicationIdentifier.Text;
         private void EntryApplicationNameChanged(object sender, EventArgs e) => WizardPage.ApplicationName = entryApplicationName.Text;
 
@@ -89,6 +91,18 @@ namespace jzeferino.XSAddin.Wizard
             if (checkboxUnitTestsProject != null)
             {
                 checkboxUnitTestsProject.Toggled += UnitTestsProjectChanged;
+            }
+            if (checkboxFolderStructure != null)
+            {
+                checkboxFolderStructure.Toggled += FolderStructureChanged;
+            }
+            if (entryApplicationIdentifier != null)
+            {
+                entryApplicationIdentifier.Changed += EntryApplicationIdentifierChanged;
+            }
+            if (entryApplicationName != null)
+            {
+                entryApplicationName.Changed += EntryApplicationNameChanged;
             }
         }
     }

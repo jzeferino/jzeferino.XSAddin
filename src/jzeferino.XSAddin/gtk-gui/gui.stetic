@@ -527,6 +527,21 @@
                     <property name="AutoSize">True</property>
                   </packing>
                 </child>
+                <child>
+                  <widget class="Gtk.CheckButton" id="checkboxFolderStructure">
+                    <property name="MemberName" />
+                    <property name="Tooltip" translatable="yes">Map project folder structure in solution with solution folders.</property>
+                    <property name="CanFocus">True</property>
+                    <property name="Label" translatable="yes">Map solution folders</property>
+                    <property name="DrawIndicator">True</property>
+                    <property name="HasLabel">True</property>
+                    <property name="UseUnderline">True</property>
+                  </widget>
+                  <packing>
+                    <property name="Position">3</property>
+                    <property name="AutoSize">True</property>
+                  </packing>
+                </child>
               </widget>
               <packing>
                 <property name="Position">0</property>
