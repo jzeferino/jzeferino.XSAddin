@@ -42,6 +42,7 @@ Task("Restore-Packages")
 Task("Build")
 	.IsDependentOn("Clean-Solution")
     .IsDependentOn("Restore-Packages")
+    .WithCriteria(() => isLocalBuild) // Temporary solution to bypass AppVeyor Error
     .Does(() =>
 	{ 		
 		 DotNetBuild(solutionFile, settings =>
@@ -53,6 +54,7 @@ Task("Build")
 
 Task("Pack")
 	.IsDependentOn("Build")
+    .WithCriteria(() => isLocalBuild)
     .WithCriteria(() => HasMdTool())
 	.Does(() => 
 	{
@@ -61,10 +63,9 @@ Task("Pack")
 
 private bool HasMdTool()
 {
-	var mdToolPath = IsRunningOnWindows() ?
-		@"C:\Program Files (x86)\Xamarin Studio\bin\mdtool.exe" : @"/Applications/Xamarin Studio.app/Contents/Resources/lib/monodevelop/bin/mdtool.exe";
+	var mdToolPath = @"/Applications/Xamarin Studio.app/Contents/Resources/lib/monodevelop/bin/mdtool.exe";
 
-	if (!string.IsNullOrEmpty(mdToolPath) && FileExists(mdToolPath)) {
+	if (FileExists(mdToolPath)) {
 		Information("mdtool exists");
 
 		Context.Tools.RegisterFile(mdToolPath);
