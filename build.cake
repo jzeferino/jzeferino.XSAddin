@@ -7,7 +7,7 @@ var configuration = "Release";
 var solutionFile = GetFiles("./*.sln").First();
 
 // Addin project.
-var binaryPath = File("./src/jzeferino.XSAddin/bin/" + configuration + "jzeferino.XSAddin.dll");
+var binaryPath = System.IO.Path.Combine("./src/jzeferino.XSAddin/bin", configuration, "jzeferino.XSAddin.dll");
 
 // Output folder.
 var artifactsDir = Directory("./artifacts");
@@ -48,16 +48,30 @@ Task("Build")
         	settings.SetConfiguration(configuration)   
 			.WithTarget("Build")
             .WithProperty("TreatWarningsAsErrors", "false")
-			.SetVerbosity(Verbosity.Verbose));        
+			.SetVerbosity(Verbosity.Quiet));        
     });
 
 Task("Pack")
 	.IsDependentOn("Build")
-    .WithCriteria(() => isLocalBuild)
+    .WithCriteria(() => HasMdTool())
 	.Does(() => 
 	{
 		MDToolSetup.Pack(binaryPath, artifactsDir);
 	});
+
+private bool HasMdTool()
+{
+	var mdToolPath = IsRunningOnWindows() ?
+		@"C:\Program Files (x86)\Xamarin Studio\bin\mdtool.exe" : @"/Applications/Xamarin Studio.app/Contents/Resources/lib/monodevelop/bin/mdtool.exe";
+
+	if (!string.IsNullOrEmpty(mdToolPath) && FileExists(mdToolPath)) {
+		Information("mdtool exists");
+
+		Context.Tools.RegisterFile(mdToolPath);
+		return true;
+	}
+	return false;
+}
 
 Task("Default")
 	.IsDependentOn("Pack");

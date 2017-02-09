@@ -2,7 +2,7 @@
 using Mono.Addins.Description;
 
 [assembly: Addin(
-    "jzeferino.XSAddin",
+    Id = "jzeferino.XSAddin",
     Namespace = "jzeferino.XSAddin",
     Version = "1.0.0"
 )]
@@ -14,3 +14,4 @@ using Mono.Addins.Description;
                             "It already creates some PCL projects to allow the shared code to be separated in different layers using MVVM pattern." +
                             "It also allows you to create some file templates.")]
 [assembly: AddinAuthor("jzeferino")]
+[assembly: AddinUrl("https://github.com/jzeferino/jzeferino.XSAddin")]
