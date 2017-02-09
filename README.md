@@ -7,7 +7,7 @@
 </p>
 
 jzeferino.XSAddin is personal project that create a Xamarin Studio add-in to let you create a Xamarin Cross Platform solution (Xamarin.Native) or (Xamarin.Forms).
-When creating the project the user can select the application name, the application identifier and if he wants .gitignore, readme and cake.
+When creating the project the addin will show you a custom wizard wich the user can select the application name, the application identifier and if he wants .gitignore, readme and cake.
 It already creates some PCL (ViewModel, Service, Controller, Localisation and Tests) projects to allow the shared code to be separated in different layers using MVVM pattern.
 It also allows you to create some file templates.
 
@@ -33,18 +33,18 @@ The main goal of this addin is to create a fast and clean Xamarin Cross Platform
   <img src="https://github.com/jzeferino/jzeferino.XSAddin/blob/master/art/demo_template.gif?raw=true"/>
 </p>
 
-## Building
+## Building (OSX)
 1. Install Xamarin Studio
-2. Install Add-in `Add-in Maker`
+2. Install the Add-in `Add-in Maker`
 3. Clone this repo
 4. Run
 
+### Notes:
+* This addin was made to satisfy my personal needs.
+* Only tested in OSX.
+
 ## TODO
 See [TODO](TODO.md) file.
-
-### Notes:
-This addin was made to satisfy my personal needs.
-Only tested in OSX.
 
 ### License
 [MIT Licence](LICENSE) 
