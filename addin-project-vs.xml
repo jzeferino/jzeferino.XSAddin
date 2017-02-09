@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="UTF-8"?>
-<AddinProject appVersion="6.0">
+<AddinProject appVersion="7.0">
 	<Project platforms="Mac">
 		<AddinFile>src/jzeferino.XSAddin/bin/Release/jzeferino.XSAddin.dll</AddinFile>
 		<BuildFile>jzeferino.XSAddin.sln</BuildFile>

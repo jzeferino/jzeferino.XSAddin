@@ -8,6 +8,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution 
 		README.md = README.md
 		TODO.md = TODO.md
 		appveyor.yml = appveyor.yml
+		addin-project-vs.xml = addin-project-vs.xml
 	EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "jzeferino.XSAddin", "src\jzeferino.XSAddin\jzeferino.XSAddin.csproj", "{244322D1-C06E-43E3-8B9D-942ADDFCB1E8}"

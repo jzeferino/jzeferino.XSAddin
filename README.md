@@ -43,7 +43,7 @@ The main goal of this addin is to create a fast and clean Xamarin Cross Platform
 * This addin was made to satisfy my personal needs.
 * Only tested in OSX.
 
-## TODO
+### TODO
 See [TODO](TODO.md) file.
 
 ### License
