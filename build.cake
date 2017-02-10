@@ -42,7 +42,6 @@ Task("Restore-Packages")
 Task("Build")
 	.IsDependentOn("Clean-Solution")
     .IsDependentOn("Restore-Packages")
-    .WithCriteria(() => isLocalBuild) // Temporary solution to bypass AppVeyor Error
     .Does(() =>
 	{ 		
 		 DotNetBuild(solutionFile, settings =>
