@@ -4,7 +4,7 @@ using Mono.Addins.Description;
 [assembly: Addin(
     Id = "jzeferino.XSAddin",
     Namespace = "jzeferino.XSAddin",
-    Version = "0.0.1"
+    Version = "0.1"
 )]
 
 [assembly: AddinName("jzeferino.XSAddin")]
