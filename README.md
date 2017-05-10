@@ -6,13 +6,13 @@
   <img src="https://github.com/jzeferino/jzeferino.XSAddin/blob/master/art/icon.png?raw=true"/>
 </p>
 
-jzeferino.XSAddin is personal project that create a Xamarin Studio add-in to let you create a Xamarin Cross Platform solution (Xamarin.Native) or (Xamarin.Forms).
-When creating the project the addin will show you a custom wizard wich the user can select the application name, the application identifier and if he wants .gitignore, readme and cake.
-It already creates some PCL (ViewModel, Service, Controller, Localisation and Tests) projects to allow the shared code to be separated in different layers using MVVM pattern.
+jzeferino.XSAddin is personal project that creates a Xamarin Studio add-in to let you create a Xamarin Cross Platform solution (Xamarin.Native) or (Xamarin.Forms).
+When creating the project the add-in will show you a custom wizard wich the user can select the application name, the application identifier and if he wants .gitignore, readme and cake.
+It also creates some PCL (ViewModel, Service, Controller, Localisation and Tests) projects to allow the shared code to be separated in different layers using a MVVM pattern.
 It also allows you to create some file templates.
 
 ## Goal
-The main goal of this addin is to create a fast and clean Xamarin Cross Platform solution (Xamarin.Native) or (Xamarin.Forms) ready to add nuget packages in need for that specific project.
+The main goal of this add-in is to create a fast and clean (without other dependencies) Xamarin Cross Platform solution (Xamarin.Native) or (Xamarin.Forms) ready to add nuget packages for that specific project.
 
 ## Installation
 1. Open Xamarin Studio `Add-in Manager`
@@ -35,12 +35,12 @@ The main goal of this addin is to create a fast and clean Xamarin Cross Platform
 
 ## Building (OSX)
 1. Install Xamarin Studio
-2. Install the Add-in `Add-in Maker`
+2. Install the Add-in `Add-in Maker` from Xamarin Studio
 3. Clone this repo
-4. Run
+4. Open the project and run it
 
 ### Notes:
-* This addin was made to satisfy my personal needs.
+* This add-in was made to satisfy my personal needs.
 * Only tested in OSX.
 
 ### TODO
